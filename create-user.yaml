@@ -1,10 +1,14 @@
 ---
-- name: Create Linux Group
+- name: Create Linux User
   hosts: all
   become: true
   tasks:
-    - name: Create Group
-      ansible.builtin.group:
-        name: "{{ group  }}"
-        state: present
+    - name: Create User
+      ansible.builtin.user:
+        name: "{{ username }}"
+        password: "{{ password | password_hash('sha512') }}" 
+        create_home: true
+        group: "{{ group }}"
+        shell: /bin/bash
+        generate_ssh_key: true
       become: true

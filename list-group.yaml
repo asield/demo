@@ -3,10 +3,9 @@
   hosts: all
   tasks:
     - name: Get System Group List
-      ansible.builtin.getent:
-        database: group
+      ansible.builtin.shell: groups
       register: groups
 
     - name: Show System Group List
       ansible.builtin.debug:
-        var: groups.ansible_facts.getent_group
+        var: groups.stdout

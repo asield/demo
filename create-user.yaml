@@ -1,0 +1,10 @@
+---
+- name: Create Linux Group
+  hosts: all
+  become: true
+  tasks:
+    - name: Create Group
+      ansible.builtin.group:
+        name: "{{ group  }}"
+        state: present
+      become: true

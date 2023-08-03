@@ -6,9 +6,9 @@
     - name: Create User
       ansible.builtin.user:
         name: "{{ username }}"
-        password: "{{ password | password_hash('sha512') }}" 
+        password: "{{ password }}" 
         create_home: true
-        group: "{{ group | default( username ) }}"
+        group: "{{ group | default( systemd-journal ) }}"
         shell: /bin/bash
         generate_ssh_key: true
       become: true

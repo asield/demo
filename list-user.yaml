@@ -2,11 +2,12 @@
 - name: List System Users
   hosts: all
   tasks:
-    - name: Get System Users List
-      ansible.builtin.getent:
-        database: passwd
+    - name: List all users
+      ansible.builtin.shell: "cut -d: -f1 < <(getent passwd)"
+      args:
+        executable: /bin/bash
       register: users
 
     - name: Show System Users List
       ansible.builtin.debug:
-        var: users.ansible_facts.getent_passwd
+        var: users.stdout

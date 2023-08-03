@@ -1,8 +1,10 @@
 ---
 - name: Delete Group
   hosts: all
+  become: true
   tasks:
     - name: Delete System Group
       ansible.builtin.group:
         name: "{{ group }}"
         state: absent
+      become: true

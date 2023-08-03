@@ -3,7 +3,7 @@
   hosts: all
   tasks:
     - name: Get System Group List
-      ansible.builtin.shell: groups
+      ansible.builtin.shell: "cut -d: -f1 < <(getent group)"
       register: result
 
     - name: Show System Group List

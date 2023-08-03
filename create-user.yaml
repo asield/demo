@@ -8,7 +8,6 @@
         name: "{{ username }}"
         password: "{{ password }}" 
         create_home: true
-        group: "{{ group }}"
         shell: /bin/bash
         generate_ssh_key: true
       become: true

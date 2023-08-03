@@ -6,8 +6,8 @@
       ansible.builtin.shell: "cut -d: -f1 < <(getent passwd)"
       args:
         executable: /bin/bash
-      register: users
+      register: result
 
     - name: Show System Users List
       ansible.builtin.debug:
-        var: users.stdout
+        var: result.stdout

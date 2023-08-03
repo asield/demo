@@ -4,8 +4,8 @@
   tasks:
     - name: Get System Group List
       ansible.builtin.shell: groups
-      register: groups
+      register: result
 
     - name: Show System Group List
       ansible.builtin.debug:
-        var: groups.stdout
+        var: result.stdout

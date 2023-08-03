@@ -4,6 +4,8 @@
   tasks:
     - name: Get System Group List
       ansible.builtin.shell: "cut -d: -f1 < <(getent group)"
+      args:
+        executable: /bin/bash
       register: result
 
     - name: Show System Group List
